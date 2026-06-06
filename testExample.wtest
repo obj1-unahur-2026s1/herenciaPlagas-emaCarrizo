@@ -1,10 +1,17 @@
 import plagas.*
 import elementos.*
 
-describe "group of tests for pepita" {
+describe "tests plagas" {
+    const cuca1 = new Cucarachas(poblacion=10, pesoPromedio=8)
+    const hogar1 = new Hogar(mugre=10, confort=21)
 
-  test "pepita has initial energy" {
-    assert.equals(10, Cucarachas.nivelDeDaño())
-  }
+    test "el Hogar hogar1 es bueno si no recibe ataques" {
+      assert.that(hogar1.esBueno())
+    }
+
+    test "si el Hogar hogar1 recibe un ataque de cuca1, entonces ya no es mas bueno" {
+      cuca1.atacar(hogar1)
+      assert.notThat(hogar1.esBueno())
+    }
 
 }
